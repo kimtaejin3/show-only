@@ -78,7 +78,7 @@ struct BannerView: View {
 #Preview("Banners") {
     VStack(spacing: Theme.Spacing.s3) {
         BannerView(tone: .info, title: "이전 보여주기가 끝났어요", message: "앱이 다시 시작되면서 고른 사진을 비웠어요. 다시 골라주세요.")
-        BannerView(tone: .warning, title: "1장을 불러오지 못했어요", message: "iCloud에서 원본을 받지 못했어요. 네트워크를 확인해 주세요.", actionTitle: "다시 시도") {}
+        BannerView(tone: .warning, title: "1장을 불러오지 못했어요", message: "사진 원본을 가져오지 못했어요. 잠시 후 다시 시도해 주세요.", actionTitle: "다시 시도") {}
         BannerView(tone: .error, title: "기기 암호가 설정되어 있지 않아요", message: "보여주기를 끝낼 때 주인 확인이 필요해요. 기기 암호를 켜면 시작할 수 있어요.")
         BannerView(tone: .error, title: "인증하지 못했어요", message: "사진은 계속 가려둘게요. 다시 시도하거나 기기 암호를 사용해 주세요.", isDark: true)
             .padding(Theme.Spacing.s3)

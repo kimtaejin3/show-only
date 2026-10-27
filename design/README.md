@@ -44,7 +44,7 @@
 ## 오류·엣지 케이스 (캔버스 "Errors & Edge Cases")
 | 화면 | 언제 |
 |---|---|
-| Home / Loading | 선택 직후 이미지 로딩 중 (iCloud 원본 지연) — CTA 비활성 |
+| Home / Loading | 선택 직후 이미지 로딩 중 (큰 원본은 지연) — CTA 비활성 |
 | Home / Partial Failure | 일부 사진 로드 실패 — Warning 배너 + 다시 시도, 불러온 장수로 시작 가능 |
 | Home / Limit Reached | 10장 선택 — Info 배너, +N 오버레이 |
 | Home / No Device Auth | Face ID·Touch ID·암호 모두 꺼짐 — Error 배너, 시작 비활성, 설정 링크 |

@@ -206,7 +206,7 @@ private struct HomeContent: View {
                     BannerView(
                         tone: .warning,
                         title: "\(snapshot.failedCount)장을 불러오지 못했어요",
-                        message: "iCloud에서 원본을 받지 못했어요. 네트워크를 확인해 주세요.",
+                        message: "사진 원본을 가져오지 못했어요. 잠시 후 다시 시도해 주세요.",
                         actionTitle: "다시 시도",
                         action: onRetry
                     )
@@ -296,7 +296,7 @@ private struct HomeContent: View {
 
     private var subheadline: String {
         if snapshot.isEmpty { return "고른 사진만 넘겨볼 수 있어요.\n끝낼 때는 휴대폰 주인의 확인이 필요해요." }
-        if snapshot.isLoading { return "iCloud에 있는 사진은 조금 더 걸릴 수 있어요." }
+        if snapshot.isLoading { return "용량이 큰 사진은 조금 더 걸릴 수 있어요." }
         if snapshot.failedCount > 0 {
             return snapshot.loadedCount == 0
                 ? "다시 시도하거나 다른 사진을 골라주세요."

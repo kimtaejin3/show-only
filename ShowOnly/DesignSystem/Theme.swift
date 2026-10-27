@@ -43,7 +43,6 @@ enum Theme {
         static let lockTitle = Font.system(size: 34, weight: .bold)
         static let title = Font.system(size: 22, weight: .bold)
         static let section = Font.system(size: 19, weight: .bold)
-        static let wordmark = Font.system(size: 17, weight: .bold)
         static let body = Font.system(size: 16)
         static let bodyEmphasis = Font.system(size: 17, weight: .semibold)
         static let subhead = Font.system(size: 15)

@@ -113,12 +113,6 @@ private struct HomeContent: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                Text("ShowOnly")
-                    .font(Theme.Fonts.wordmark)
-                    .foregroundStyle(Theme.Colors.text)
-                    .padding(.top, Theme.Spacing.s4)
-                    .accessibilityAddTraits(.isHeader)
-
                 VStack(alignment: .leading, spacing: Theme.Spacing.s3) {
                     Text(headline)
                         .font(Theme.Fonts.largeTitle)
@@ -132,7 +126,7 @@ private struct HomeContent: View {
                         .lineSpacing(3)
                         .fixedSize(horizontal: false, vertical: true)
                 }
-                .padding(.top, Theme.Spacing.s6 + Theme.Spacing.s4)
+                .padding(.top, Theme.Spacing.s6 + Theme.Spacing.s6)
 
                 if snapshot.isEmpty {
                     emptyBody

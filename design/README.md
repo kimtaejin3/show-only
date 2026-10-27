@@ -1,6 +1,6 @@
 # ShowOnly 디자인 (A · Quiet Shield)
 
-- 앱 이름: ShowOnly (영문 워드마크, "이것만 봐"는 사용 안 함)
+- 앱 이름: 딱 이 사진만 (홈 화면 아이콘 아래 이름. 앱 안에는 이름을 텍스트로 넣지 않음)
 
 - 원본: `show-only.pen` (Pen.app). 상단은 후보 A/B/C, 아래가 최종 A.
 - 화면: Home / Empty, Home / Selected, Viewer, Lock / Default, Lock / Auth Failed, Protection Guide

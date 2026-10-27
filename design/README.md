@@ -40,3 +40,18 @@
 | 잠금 | "Face ID로 다시 보기" / 실패 시 "Face ID 다시 시도" + "기기 암호 사용" | 재진입 인증 |
 
 `Button / Auth` 컴포넌트는 기기에 따라 글리프·문구를 바꾼다: Face ID(`faceid`) / Touch ID(`touchid`) / 암호만(`key`). SwiftUI에서는 `LAContext.biometryType`으로 분기하고 SF Symbols `faceid`, `touchid`를 쓴다.
+
+## 오류·엣지 케이스 (캔버스 "Errors & Edge Cases")
+| 화면 | 언제 |
+|---|---|
+| Home / Loading | 선택 직후 이미지 로딩 중 (iCloud 원본 지연) — CTA 비활성 |
+| Home / Partial Failure | 일부 사진 로드 실패 — Warning 배너 + 다시 시도, 불러온 장수로 시작 가능 |
+| Home / Limit Reached | 10장 선택 — Info 배너, +N 오버레이 |
+| Home / No Device Auth | Face ID·Touch ID·암호 모두 꺼짐 — Error 배너, 시작 비활성, 설정 링크 |
+| Home / Session Ended | 보여주는 중 iOS가 앱 종료 후 재실행 — Info 배너, 빈 상태 |
+| Viewer / Single Photo, Last Photo | 1장일 때 넘기기 안내 제거 / 마지막 장 안내 |
+| Viewer / End Auth Failed | 종료 시트에서 인증 실패·취소 — Error 배너, 사진은 계속 표시 |
+| Lock / Biometry Locked, Face ID Unavailable | 생체 인증 잠김·불가 — 기기 암호 버튼만 |
+| Lock / Touch ID | 홈 버튼 기기 — 글리프·문구만 교체 |
+
+컴포넌트: `Banner/Info|Warning|Error`(좌측 3px 스트로크), `Photo/Loading`, `Photo/Failed`.

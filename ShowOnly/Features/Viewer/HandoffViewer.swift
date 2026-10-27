@@ -135,19 +135,21 @@ private struct ViewerContent: View {
 
             Spacer()
 
-            Text(hint)
-                .font(Theme.Fonts.caption)
-                .foregroundStyle(Theme.Colors.lockText2)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, Theme.Spacing.margin)
-                .padding(.bottom, Theme.Spacing.s5)
+            if let hint {
+                Text(hint)
+                    .font(Theme.Fonts.caption)
+                    .foregroundStyle(Theme.Colors.lockText2)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, Theme.Spacing.margin)
+                    .padding(.bottom, Theme.Spacing.s5)
+            }
         }
     }
 
-    private var hint: String {
-        if photos.count <= 1 { return "두 번 탭하면 확대돼요" }
+    private var hint: String? {
+        if photos.count <= 1 { return nil }
         if currentIndex >= photos.count - 1 { return "마지막 사진이에요" }
-        return "좌우로 넘겨보세요 · 두 번 탭하면 확대돼요"
+        return "좌우로 넘겨보세요"
     }
 }
 

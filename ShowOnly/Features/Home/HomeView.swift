@@ -142,9 +142,11 @@ private struct HomeContent: View {
                         .padding(.top, Theme.Spacing.s6)
                 }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, Theme.Spacing.margin)
             .padding(.bottom, Theme.Spacing.s5)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Theme.Colors.bg.ignoresSafeArea())
         .safeAreaInset(edge: .bottom) { bottomBar }
     }

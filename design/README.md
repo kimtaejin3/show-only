@@ -49,7 +49,7 @@
 | Home / Limit Reached | 10장 선택 — Info 배너, +N 오버레이 |
 | Home / No Device Auth | Face ID·Touch ID·암호 모두 꺼짐 — Error 배너, 시작 비활성, 설정 링크 |
 | Home / Session Ended | 보여주는 중 iOS가 앱 종료 후 재실행 — Info 배너, 빈 상태 |
-| Viewer / Single Photo, Last Photo | 1장일 때 넘기기 안내 제거 / 마지막 장 안내 |
+| Viewer / Single Photo, Last Photo | 1장일 때 하단 안내 없음 / 마지막 장 안내 |
 | Viewer / End Auth Failed | 종료 시트에서 인증 실패·취소 — Error 배너, 사진은 계속 표시 |
 | Lock / Biometry Locked, Face ID Unavailable | 생체 인증 잠김·불가 — 기기 암호 버튼만 |
 | Lock / Touch ID | 홈 버튼 기기 — 글리프·문구만 교체 |

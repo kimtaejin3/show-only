@@ -152,7 +152,7 @@ private struct LockContent: View {
     private var description: String {
         switch mode {
         case .biometric, .passcodeOnly:
-            return "다시 보려면 휴대폰 주인의 확인이 필요해요. 확인 전에는 사진을 보여주지 않아요."
+            return "다시 보려면 본인 확인이 필요해요. 확인 전에는 사진을 보여주지 않아요."
         case .biometryLocked(let name):
             return "\(name) 시도 횟수를 넘었어요.\n기기 암호로 확인해 주세요."
         case .biometryUnavailable(let name):

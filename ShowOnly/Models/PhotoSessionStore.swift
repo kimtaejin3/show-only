@@ -41,7 +41,7 @@ final class PhotoSessionStore: ObservableObject {
         defaults.set(true, forKey: Self.activeFlagKey)
     }
 
-    /// 주인 확인을 진행합니다. 인증 시트 때문에 앱이 잠깐 비활성화돼도 세션을 잠그지 않습니다.
+    /// 본인 확인을 진행합니다. 인증 시트 때문에 앱이 잠깐 비활성화돼도 세션을 잠그지 않습니다.
     func authenticateOwner(_ authenticate: () async -> AuthOutcome) async -> AuthOutcome {
         isAuthenticatingInApp = true
         defer { isAuthenticatingInApp = false }

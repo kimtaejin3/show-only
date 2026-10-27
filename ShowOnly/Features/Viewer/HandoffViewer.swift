@@ -128,7 +128,7 @@ private struct ViewerContent: View {
                 }
                 .padding(.trailing, -Theme.Spacing.s2)
                 .accessibilityLabel("보여주기 끝내기")
-                .accessibilityHint("휴대폰 주인의 \(kind.displayName) 확인이 필요해요")
+                .accessibilityHint("\(kind.displayName)로 본인 확인 후 끝낼 수 있어요")
             }
             .padding(.horizontal, Theme.Spacing.margin)
             .padding(.top, Theme.Spacing.s2)

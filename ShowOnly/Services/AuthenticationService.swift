@@ -1,7 +1,7 @@
 import Foundation
 import LocalAuthentication
 
-/// 기기가 지원하는 주인 확인 수단. UI는 이 값으로 글리프·문구를 고릅니다.
+/// 기기가 지원하는 본인 확인 수단. UI는 이 값으로 글리프·문구를 고릅니다.
 enum BiometryKind: Equatable {
     case faceID
     case touchID
@@ -10,7 +10,7 @@ enum BiometryKind: Equatable {
     case passcodeOnly
 }
 
-/// 지금 이 기기에서 주인 확인이 가능한지.
+/// 지금 이 기기에서 본인 확인이 가능한지.
 struct AuthStatus: Equatable {
     /// 기기 암호 또는 생체 인증 중 하나라도 가능하면 true. false면 보여주기를 시작할 수 없음.
     var canAuthenticate: Bool

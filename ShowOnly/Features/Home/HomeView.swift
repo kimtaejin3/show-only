@@ -199,7 +199,7 @@ private struct HomeContent: View {
                     BannerView(
                         tone: .error,
                         title: "기기 암호가 설정되어 있지 않아요",
-                        message: "보여주기를 끝낼 때 주인 확인이 필요해요. 기기 암호를 켜면 시작할 수 있어요."
+                        message: "보여주기를 끝낼 때 본인 확인이 필요해요. 기기 암호를 켜면 시작할 수 있어요."
                     )
                 }
                 if snapshot.failedCount > 0 && !snapshot.isLoading {
@@ -295,7 +295,7 @@ private struct HomeContent: View {
     }
 
     private var subheadline: String {
-        if snapshot.isEmpty { return "고른 사진만 넘겨볼 수 있어요.\n끝낼 때는 휴대폰 주인의 확인이 필요해요." }
+        if snapshot.isEmpty { return "고른 사진만 넘겨볼 수 있어요.\n끝낼 때는 본인 확인이 필요해요." }
         if snapshot.isLoading { return "용량이 큰 사진은 조금 더 걸릴 수 있어요." }
         if snapshot.failedCount > 0 {
             return snapshot.loadedCount == 0

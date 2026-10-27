@@ -18,7 +18,7 @@ struct EndSessionSheet: View {
                 .foregroundStyle(Theme.Colors.text)
                 .accessibilityAddTraits(.isHeader)
 
-            Text("휴대폰 주인만 끝낼 수 있어요.\n끝내면 앱에서 사진을 비워요. 사진 앱의 원본은 그대로예요.")
+            Text("본인 확인 후에 끝낼 수 있어요.\n끝내면 앱에서 사진을 비워요. 사진 앱의 원본은 그대로예요.")
                 .font(Theme.Fonts.subhead)
                 .foregroundStyle(Theme.Colors.text2)
                 .lineSpacing(3)
@@ -28,8 +28,8 @@ struct EndSessionSheet: View {
             if didFail {
                 BannerView(
                     tone: .error,
-                    title: "주인 확인에 실패했어요",
-                    message: "계속 보여주는 중이에요. 휴대폰 주인이 다시 시도해 주세요."
+                    title: "본인 확인에 실패했어요",
+                    message: "사진은 계속 보여주고 있어요. 다시 시도해 주세요."
                 )
                 .padding(.top, Theme.Spacing.s5)
             }

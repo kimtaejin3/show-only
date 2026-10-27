@@ -160,11 +160,6 @@ private struct HomeContent: View {
                     message: "앱이 다시 시작되면서 고른 사진을 비웠어요. 다시 골라주세요."
                 )
             }
-            VStack(spacing: 0) {
-                FactRow(index: 1, text: "고른 사진만 불러와요", showsTopSeparator: true)
-                FactRow(index: 2, text: "앱을 벗어나면 바로 사진을 가리고 잠가요")
-                FactRow(index: 3, text: "사진은 이 기기 밖으로 나가지 않아요")
-            }
         }
     }
 

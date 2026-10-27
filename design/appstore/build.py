@@ -10,7 +10,7 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 # 빈 줄(\n\n)로 나눈 문단은 같은 크기로 쓰고 사이만 띄운다. 보조 문구는 쓰지 않는다.
 FRAMES = [
-    ("01", "viewer", "사진 보여줄 때,\n다른 사진까지\n볼까 봐 걱정되나요?", "", 0),
+    ("01", "viewer", "친구에게 사진 보여줄 때,\n다른 사진까지 볼까 봐\n걱정되나요?", "", 0),
     ("02", "home_selected", "보여주고 싶은\n사진만 골라서\n보여주세요", "", 0),
     ("03", "guide_top", "카톡 알림이나\n다른 앱으로 이동하는 게\n걱정된다면?\n\n보호 설정 방법도\n알려드려요", "", 160),
 ]

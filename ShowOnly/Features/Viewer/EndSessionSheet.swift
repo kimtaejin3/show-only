@@ -18,7 +18,7 @@ struct EndSessionSheet: View {
                 .foregroundStyle(Theme.Colors.text)
                 .accessibilityAddTraits(.isHeader)
 
-            Text("본인 확인 후에 끝낼 수 있어요.\n끝내면 앱에서 사진을 비워요. 사진 앱의 원본은 그대로예요.")
+            Text("본인 확인 후에 끝낼 수 있어요.\n끝내면 앱에서 사진을 비워요.\n사진 앱의 원본은 그대로예요.")
                 .font(Theme.Fonts.subhead)
                 .foregroundStyle(Theme.Colors.text2)
                 .lineSpacing(3)

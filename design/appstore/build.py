@@ -9,10 +9,10 @@ os.makedirs(OUT, exist_ok=True)
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 FRAMES = [
-    ("01", "home_selected", "폰 건넬 때마다\n다른 사진 볼까 봐", "그래서 보여줄 사진만 골라 건네게 만들었어요.", 0),
+    ("01", "home_selected", "폰 건넬 때마다\n다른 사진 볼까 봐", "보여줄 사진만 골라서 건네요.", 0),
     ("02", "viewer", "옆으로 넘겨도\n고른 사진만 나와요", "끝낼 때는 내 Face ID로 확인해요.", 0),
-    ("03", "lock", "앱을 나갔다 오면\n사진은 잠겨 있어요", "다시 보려면 본인 확인이 필요해요.", 0),
-    ("04", "guide_top", "알림·앱 이동 막는 법,\n한 화면에 정리했어요", "iOS 집중 모드와 사용법 유도 설정을 안내해요.", 0),
+    ("03", "lock", "앱을 나갔다 오면\n사진은 잠겨 있어요", "내 Face ID로 다시 열어요.", 0),
+    ("04", "guide_top", "카톡이 뜰까 봐,\n딴 앱을 열까 봐", "집중 모드·사용법 유도 설정을 알려줘요.", 0),
 ]
 
 THEMES = {

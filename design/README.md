@@ -30,3 +30,13 @@
 | 버튼 | 높이 54, radius 14, 라벨 17 Semibold |
 
 시안 폰트는 IBM Plex Sans KR / IBM Plex Mono. 앱에서는 SF Pro + `.monospacedDigit()` 또는 SF Mono로 대체.
+
+## Face ID 버튼 규칙
+| 위치 | 버튼 | 의미 |
+|---|---|---|
+| 홈 / 선택됨 | CTA 위 힌트 "끝낼 때는 내 Face ID가 필요해요" | 시작 전에 종료 조건을 미리 알림 (시작 자체는 인증 없음) |
+| 뷰어 상단 | Face ID 글리프 + "끝내기" (흐리게) | 받는 사람에게 "주인 인증이 필요한 버튼"임을 표시 |
+| 뷰어 / 종료 시트 | "Face ID로 끝내기" + "계속 보여주기" | 누르면 시스템 Face ID 호출 |
+| 잠금 | "Face ID로 다시 보기" / 실패 시 "Face ID 다시 시도" + "기기 암호 사용" | 재진입 인증 |
+
+`Button / Auth` 컴포넌트는 기기에 따라 글리프·문구를 바꾼다: Face ID(`faceid`) / Touch ID(`touchid`) / 암호만(`key`). SwiftUI에서는 `LAContext.biometryType`으로 분기하고 SF Symbols `faceid`, `touchid`를 쓴다.

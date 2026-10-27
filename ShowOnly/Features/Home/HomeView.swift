@@ -161,8 +161,8 @@ private struct HomeContent: View {
                 )
             }
             VStack(spacing: 0) {
-                FactRow(index: 1, text: "고른 사진 말고는 불러오지 않아요", showsTopSeparator: true)
-                FactRow(index: 2, text: "앱을 나갔다 오면 사진을 가리고 잠가요")
+                FactRow(index: 1, text: "고른 사진만 불러와요", showsTopSeparator: true)
+                FactRow(index: 2, text: "앱을 벗어나면 바로 사진을 가리고 잠가요")
                 FactRow(index: 3, text: "사진은 이 기기 밖으로 나가지 않아요")
             }
         }
@@ -199,7 +199,7 @@ private struct HomeContent: View {
                     BannerView(
                         tone: .error,
                         title: "기기 암호가 설정되어 있지 않아요",
-                        message: "보여주기를 끝낼 때 주인 확인이 필요해서, 암호를 켜야 시작할 수 있어요."
+                        message: "보여주기를 끝낼 때 주인 확인이 필요해요. 기기 암호를 켜면 시작할 수 있어요."
                     )
                 }
                 if snapshot.failedCount > 0 && !snapshot.isLoading {
@@ -214,10 +214,10 @@ private struct HomeContent: View {
                     BannerView(
                         tone: .info,
                         title: "최대 \(PhotoSelectionStore.maxCount)장까지 고를 수 있어요",
-                        message: "다른 사진을 넣으려면 '다시 고르기'로 바꿔주세요."
+                        message: "다른 사진을 보여주려면 ‘다시 고르기’를 눌러주세요."
                     )
                 } else if !snapshot.isLoading && snapshot.canAuthenticate {
-                    Text("보여주기를 끝내면 고른 사진도 앱에서 비워져요.")
+                    Text("보여주기를 끝내면 앱에서 사진을 비워요. 원본은 그대로예요.")
                         .font(Theme.Fonts.caption)
                         .foregroundStyle(Theme.Colors.text3)
                         .fixedSize(horizontal: false, vertical: true)
@@ -235,7 +235,7 @@ private struct HomeContent: View {
                 HStack(spacing: Theme.Spacing.s1) {
                     Image(systemName: snapshot.authStatus.kind.glyphName)
                         .accessibilityHidden(true)
-                    Text("끝낼 때는 내 \(snapshot.authStatus.kind.displayName)가 필요해요")
+                    Text("끝낼 때는 내 \(snapshot.authStatus.kind.displayName)로 확인해요")
                 }
                 .font(Theme.Fonts.caption)
                 .foregroundStyle(Theme.Colors.text3)
@@ -277,7 +277,7 @@ private struct HomeContent: View {
             Button("\(snapshot.loadedCount)장 보여주기", action: onStart)
                 .buttonStyle(.soPrimary)
                 .disabled(!snapshot.canAuthenticate)
-                .accessibilityHint("끝낼 때는 \(snapshot.authStatus.kind.displayName) 인증이 필요해요")
+                .accessibilityHint("끝낼 때는 \(snapshot.authStatus.kind.displayName)로 확인해요")
         }
     }
 
@@ -295,14 +295,14 @@ private struct HomeContent: View {
     }
 
     private var subheadline: String {
-        if snapshot.isEmpty { return "고른 사진끼리만 넘겨볼 수 있어요.\n끝낼 때는 휴대폰 주인 인증이 필요해요." }
+        if snapshot.isEmpty { return "고른 사진만 넘겨볼 수 있어요.\n끝낼 때는 휴대폰 주인의 확인이 필요해요." }
         if snapshot.isLoading { return "iCloud에 있는 사진은 조금 더 걸릴 수 있어요." }
         if snapshot.failedCount > 0 {
             return snapshot.loadedCount == 0
                 ? "다시 시도하거나 다른 사진을 골라주세요."
                 : "불러온 사진만으로 바로 시작할 수 있어요."
         }
-        if snapshot.isAtLimit { return "한 번에 보여줄 수 있는 최대 장수예요." }
+        if snapshot.isAtLimit { return "더 고를 수는 없어요. 이 사진들만 보여줘요." }
         return "이 사진들만, 이 순서대로 보여줘요."
     }
 

@@ -128,7 +128,7 @@ private struct ViewerContent: View {
                 }
                 .padding(.trailing, -Theme.Spacing.s2)
                 .accessibilityLabel("보여주기 끝내기")
-                .accessibilityHint("휴대폰 주인의 \(kind.displayName) 인증이 필요해요")
+                .accessibilityHint("휴대폰 주인의 \(kind.displayName) 확인이 필요해요")
             }
             .padding(.horizontal, Theme.Spacing.margin)
             .padding(.top, Theme.Spacing.s2)
@@ -147,7 +147,7 @@ private struct ViewerContent: View {
     private var hint: String {
         if photos.count <= 1 { return "두 번 탭하면 확대돼요" }
         if currentIndex >= photos.count - 1 { return "마지막 사진이에요" }
-        return "좌우로 넘겨보세요 · 두 번 탭하면 확대"
+        return "좌우로 넘겨보세요 · 두 번 탭하면 확대돼요"
     }
 }
 

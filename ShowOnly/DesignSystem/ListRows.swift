@@ -75,8 +75,8 @@ struct PageCounter: View {
 #Preview("List rows") {
     VStack(alignment: .leading, spacing: Theme.Spacing.s5) {
         VStack(spacing: 0) {
-            FactRow(index: 1, text: "고른 사진 말고는 불러오지 않아요", showsTopSeparator: true)
-            FactRow(index: 2, text: "앱을 나갔다 오면 사진을 가리고 잠가요")
+            FactRow(index: 1, text: "고른 사진만 불러와요", showsTopSeparator: true)
+            FactRow(index: 2, text: "앱을 벗어나면 바로 사진을 가리고 잠가요")
         }
         GuideStep(number: 1, text: "설정 → 집중 모드 → + → 사용자 설정")
         PageCounter(current: 2, total: 3)

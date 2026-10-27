@@ -23,7 +23,7 @@
 | separator | #E2E8E7 |
 | lock-bg / lock-text / lock-text-2 | #0B0F0F / #F1F5F4 / #97A6A3 |
 | lock-primary / lock-on-primary | #3CC7AE / #04211C |
-| danger | #D23B3B |
+| danger | #CE2C31 (텍스트용) |
 | radius | 10 / 14 / 20 |
 | spacing | 4 / 8 / 12 / 16 / 24 / 32, 좌우 여백 20 (잠금 24) |
 | 타이포 | Large 32–34 Bold(-0.8), Section 19 Bold, Body 16–17, Sub 15, Caption 13. 숫자 Mono 13 |
@@ -54,4 +54,4 @@
 | Lock / Biometry Locked, Face ID Unavailable | 생체 인증 잠김·불가 — 기기 암호 버튼만 |
 | Lock / Touch ID | 홈 버튼 기기 — 글리프·문구만 교체 |
 
-컴포넌트: `Banner/Info|Warning|Error`(좌측 3px 스트로크), `Photo/Loading`, `Photo/Failed`.
+컴포넌트: `Banner/Info|Warning|Error`(흰 표면 + 1px 헤어라인 #D7DAD9, 톤 색은 제목·액션에만: warning #AB6400, danger #CE2C31 — Radix step 11. 잠금 화면용 다크 변형: surface #131919, hairline #243030, danger #FF9592), `Photo/Loading`, `Photo/Failed`.

@@ -85,7 +85,7 @@ struct HandoffViewer: View {
     private func authenticateToResume() async {
         guard !isAuthenticating else { return }
         isAuthenticating = true
-        let success = await authentication.authenticate(reason: "보여주던 사진을 다시 확인하려면 인증해 주세요.")
+        let success = await authentication.authenticate(reason: "보여주던 사진을 다시 확인하려면 인증해 주세요.") == .success
         isAuthenticating = false
         if success {
             session.unlock()
@@ -98,7 +98,7 @@ struct HandoffViewer: View {
     private func authenticateToEnd() async {
         guard !isAuthenticating else { return }
         isAuthenticating = true
-        let success = await authentication.authenticate(reason: "사진 보여주기를 종료하려면 인증해 주세요.")
+        let success = await authentication.authenticate(reason: "사진 보여주기를 종료하려면 인증해 주세요.") == .success
         isAuthenticating = false
         if success {
             session.end()

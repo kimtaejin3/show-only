@@ -14,6 +14,17 @@
 		150069003DE43DECBE5D0F24 /* ZoomableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC00783457116E9F8CAFBEA /* ZoomableImageView.swift */; };
 		B4BDCAD02138FC8C5614B38E /* ProtectionGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38486355FF58FDB2A2EA5144 /* ProtectionGuideView.swift */; };
 		5F09AB555B77AB778EA1A852 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D108A0D44BDCD4067491E492 /* Assets.xcassets */; };
+		74A986A770C54C1C9B9ED8CF /* PrivacyShield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08084236D8D4565CBA4ADD6C /* PrivacyShield.swift */; };
+		24495670E4FEDEA3F2F43268 /* PhotoSelectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C546554CBB76656C5FB7CD29 /* PhotoSelectionStore.swift */; };
+		8C242ACDB6C22F3BC6FD027E /* ImageDownsampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF5AB4426A53381C19FB629 /* ImageDownsampler.swift */; };
+		C4F1B048054A6D611E01C9C1 /* LockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4156519397180012A10F2B36 /* LockView.swift */; };
+		6EB172DF65B1FB2F9073A917 /* EndSessionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB5F0B63DC6A7C24DAC8630 /* EndSessionSheet.swift */; };
+		84ECF551E9C604C0B813C2BF /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856C124ECE8630B1B54C482A /* Theme.swift */; };
+		A0097136B4405DE4DB177A27 /* SOButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43F997014F9A8A203AE847 /* SOButton.swift */; };
+		1AE9679E33677696DAB68A05 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278DACC3B77589EDA502C838 /* AuthButton.swift */; };
+		190BA99CE7D3FE93A16D8658 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A05A56F79F1B4D922F1FAA6 /* BannerView.swift */; };
+		9F676F2B44A61493F596BA4F /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2C2C4719E748361AADA746 /* PhotoCell.swift */; };
+		E731EEA170F0F031BC3D6347 /* ListRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4620E255391B395E75C5D790 /* ListRows.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +37,17 @@
 		38486355FF58FDB2A2EA5144 /* ProtectionGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectionGuideView.swift; sourceTree = "<group>"; };
 		D108A0D44BDCD4067491E492 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54F9F443FCC6A4BC983CFE3A /* ShowOnly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowOnly.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		08084236D8D4565CBA4ADD6C /* PrivacyShield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyShield.swift; sourceTree = "<group>"; };
+		C546554CBB76656C5FB7CD29 /* PhotoSelectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectionStore.swift; sourceTree = "<group>"; };
+		7DF5AB4426A53381C19FB629 /* ImageDownsampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownsampler.swift; sourceTree = "<group>"; };
+		4156519397180012A10F2B36 /* LockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockView.swift; sourceTree = "<group>"; };
+		3EB5F0B63DC6A7C24DAC8630 /* EndSessionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionSheet.swift; sourceTree = "<group>"; };
+		856C124ECE8630B1B54C482A /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		5B43F997014F9A8A203AE847 /* SOButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOButton.swift; sourceTree = "<group>"; };
+		278DACC3B77589EDA502C838 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
+		1A05A56F79F1B4D922F1FAA6 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		EC2C2C4719E748361AADA746 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		4620E255391B395E75C5D790 /* ListRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRows.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,16 +63,20 @@
 				229000D1858164C644B31F3B /* App */,
 				D306CB82511670EF42EA60A8 /* Models */,
 				8AEF5E53C6A5522B94654C71 /* Services */,
+				541F78CFF1B958CA5A3AF4E4 /* DesignSystem */,
 				6F1E4B055B9C85595982694D /* Features */,
 				10B3085B5D49612A955404D6 /* Resources */,
 			); path = ShowOnly; sourceTree = "<group>"; };
 		229000D1858164C644B31F3B /* App */ = {isa = PBXGroup; children = (
+				08084236D8D4565CBA4ADD6C /* PrivacyShield.swift */,
 				30D7794433A61484F26C1CF3 /* ShowOnlyApp.swift */,
 			); path = App; sourceTree = "<group>"; };
 		D306CB82511670EF42EA60A8 /* Models */ = {isa = PBXGroup; children = (
+				C546554CBB76656C5FB7CD29 /* PhotoSelectionStore.swift */,
 				83AD75347EF0E1A147E21058 /* PhotoSessionStore.swift */,
 			); path = Models; sourceTree = "<group>"; };
 		8AEF5E53C6A5522B94654C71 /* Services */ = {isa = PBXGroup; children = (
+				7DF5AB4426A53381C19FB629 /* ImageDownsampler.swift */,
 				7E462F4E0ED563F120EA73F7 /* AuthenticationService.swift */,
 			); path = Services; sourceTree = "<group>"; };
 		6F1E4B055B9C85595982694D /* Features */ = {isa = PBXGroup; children = (
@@ -62,6 +88,8 @@
 				9CFE971A3758C5736F374639 /* HomeView.swift */,
 			); path = Home; sourceTree = "<group>"; };
 		29CA63E32C211133857F78EF /* Viewer */ = {isa = PBXGroup; children = (
+				4156519397180012A10F2B36 /* LockView.swift */,
+				3EB5F0B63DC6A7C24DAC8630 /* EndSessionSheet.swift */,
 				4F1F04AD1CE59FC71965497C /* HandoffViewer.swift */,
 				3BC00783457116E9F8CAFBEA /* ZoomableImageView.swift */,
 			); path = Viewer; sourceTree = "<group>"; };
@@ -74,6 +102,14 @@
 		D5E3582295E158D5E63DD8C1 /* Products */ = {isa = PBXGroup; children = (
 				54F9F443FCC6A4BC983CFE3A /* ShowOnly.app */,
 			); sourceTree = "<group>"; };
+		541F78CFF1B958CA5A3AF4E4 /* DesignSystem */ = {isa = PBXGroup; children = (
+				856C124ECE8630B1B54C482A /* Theme.swift */,
+				5B43F997014F9A8A203AE847 /* SOButton.swift */,
+				278DACC3B77589EDA502C838 /* AuthButton.swift */,
+				1A05A56F79F1B4D922F1FAA6 /* BannerView.swift */,
+				EC2C2C4719E748361AADA746 /* PhotoCell.swift */,
+				4620E255391B395E75C5D790 /* ListRows.swift */,
+			); path = DesignSystem; sourceTree = "<group>"; };
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -97,14 +133,25 @@
 				E79864B6BC2BF95169068BC8 /* HandoffViewer.swift in Sources */,
 				150069003DE43DECBE5D0F24 /* ZoomableImageView.swift in Sources */,
 				B4BDCAD02138FC8C5614B38E /* ProtectionGuideView.swift in Sources */,
+				74A986A770C54C1C9B9ED8CF /* PrivacyShield.swift in Sources */,
+				24495670E4FEDEA3F2F43268 /* PhotoSelectionStore.swift in Sources */,
+				8C242ACDB6C22F3BC6FD027E /* ImageDownsampler.swift in Sources */,
+				C4F1B048054A6D611E01C9C1 /* LockView.swift in Sources */,
+				6EB172DF65B1FB2F9073A917 /* EndSessionSheet.swift in Sources */,
+				84ECF551E9C604C0B813C2BF /* Theme.swift in Sources */,
+				A0097136B4405DE4DB177A27 /* SOButton.swift in Sources */,
+				1AE9679E33677696DAB68A05 /* AuthButton.swift in Sources */,
+				190BA99CE7D3FE93A16D8658 /* BannerView.swift in Sources */,
+				9F676F2B44A61493F596BA4F /* PhotoCell.swift in Sources */,
+				E731EEA170F0F031BC3D6347 /* ListRows.swift in Sources */,
 			); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		A741C126219C9311E8B2454F /* Debug */ = {isa = XCBuildConfiguration; buildSettings = { ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; CODE_SIGN_STYLE = Automatic; IPHONEOS_DEPLOYMENT_TARGET = 16.0; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; DEBUG_INFORMATION_FORMAT = dwarf; ENABLE_TESTABILITY = YES; GCC_OPTIMIZATION_LEVEL = 0; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; }; name = Debug; };
 		BFD9E087CB85821B9ECA3B39 /* Release */ = {isa = XCBuildConfiguration; buildSettings = { ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; CODE_SIGN_STYLE = Automatic; IPHONEOS_DEPLOYMENT_TARGET = 16.0; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym"; SWIFT_OPTIMIZATION_LEVEL = "-O"; }; name = Release; };
-		E660A9BE485B4269B3132B6A /* Debug */ = {isa = XCBuildConfiguration; buildSettings = { ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; ENABLE_PREVIEWS = YES; GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_CFBundleDisplayName = "이것만 봐"; INFOPLIST_KEY_LSRequiresIPhoneOS = YES; INFOPLIST_KEY_NSFaceIDUsageDescription = "사진 보여주기 모드를 종료하거나 다시 볼 때 본인 인증을 위해 Face ID를 사용합니다."; INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES; INFOPLIST_KEY_UILaunchScreen_Generation = YES; IPHONEOS_DEPLOYMENT_TARGET = 16.0; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.example.showonly; PRODUCT_NAME = "$(TARGET_NAME)"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1;  }; name = Debug; };
-		A73E42720105D7393110A7F2 /* Release */ = {isa = XCBuildConfiguration; buildSettings = { ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; ENABLE_PREVIEWS = YES; GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_CFBundleDisplayName = "이것만 봐"; INFOPLIST_KEY_LSRequiresIPhoneOS = YES; INFOPLIST_KEY_NSFaceIDUsageDescription = "사진 보여주기 모드를 종료하거나 다시 볼 때 본인 인증을 위해 Face ID를 사용합니다."; INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES; INFOPLIST_KEY_UILaunchScreen_Generation = YES; IPHONEOS_DEPLOYMENT_TARGET = 16.0; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.example.showonly; PRODUCT_NAME = "$(TARGET_NAME)"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1;  }; name = Release; };
+		E660A9BE485B4269B3132B6A /* Debug */ = {isa = XCBuildConfiguration; buildSettings = { ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; ENABLE_PREVIEWS = YES; GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_CFBundleDisplayName = ShowOnly; INFOPLIST_KEY_LSRequiresIPhoneOS = YES; INFOPLIST_KEY_NSFaceIDUsageDescription = "사진 보여주기 모드를 종료하거나 다시 볼 때 본인 인증을 위해 Face ID를 사용합니다."; INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES; INFOPLIST_KEY_UILaunchScreen_Generation = YES; IPHONEOS_DEPLOYMENT_TARGET = 16.0; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.example.showonly; PRODUCT_NAME = "$(TARGET_NAME)"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1;  }; name = Debug; };
+		A73E42720105D7393110A7F2 /* Release */ = {isa = XCBuildConfiguration; buildSettings = { ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; ENABLE_PREVIEWS = YES; GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_CFBundleDisplayName = ShowOnly; INFOPLIST_KEY_LSRequiresIPhoneOS = YES; INFOPLIST_KEY_NSFaceIDUsageDescription = "사진 보여주기 모드를 종료하거나 다시 볼 때 본인 인증을 위해 Face ID를 사용합니다."; INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES; INFOPLIST_KEY_UILaunchScreen_Generation = YES; IPHONEOS_DEPLOYMENT_TARGET = 16.0; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.example.showonly; PRODUCT_NAME = "$(TARGET_NAME)"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1;  }; name = Release; };
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */

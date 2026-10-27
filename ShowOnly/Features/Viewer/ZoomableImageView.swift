@@ -30,6 +30,11 @@ struct ZoomableImageView: UIViewRepresentable {
             imageView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor)
         ])
         context.coordinator.imageView = imageView
+
+        // 두 번 탭하면 확대, 다시 두 번 탭하면 원래 크기
+        let doubleTap = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleDoubleTap(_:)))
+        doubleTap.numberOfTapsRequired = 2
+        scrollView.addGestureRecognizer(doubleTap)
         return scrollView
     }
 
@@ -40,5 +45,18 @@ struct ZoomableImageView: UIViewRepresentable {
     final class Coordinator: NSObject, UIScrollViewDelegate {
         weak var imageView: UIImageView?
         func viewForZooming(in scrollView: UIScrollView) -> UIView? { imageView }
+
+        @objc func handleDoubleTap(_ recognizer: UITapGestureRecognizer) {
+            guard let scrollView = recognizer.view as? UIScrollView else { return }
+            if scrollView.zoomScale > scrollView.minimumZoomScale {
+                scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)
+            } else {
+                let point = recognizer.location(in: imageView)
+                let scale: CGFloat = 2.5
+                let size = CGSize(width: scrollView.bounds.width / scale, height: scrollView.bounds.height / scale)
+                let rect = CGRect(x: point.x - size.width / 2, y: point.y - size.height / 2, width: size.width, height: size.height)
+                scrollView.zoom(to: rect, animated: true)
+            }
+        }
     }
 }

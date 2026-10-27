@@ -8,11 +8,11 @@ os.makedirs(os.path.join(S, "gen"))
 os.makedirs(OUT, exist_ok=True)
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
+# 빈 줄(\n\n)로 나눈 문단은 같은 크기로 쓰고 사이만 띄운다. 보조 문구는 쓰지 않는다.
 FRAMES = [
-    ("01", "home_selected", "폰 건넬 때마다\n다른 사진 볼까 봐", "보여줄 사진만 골라서 건네요.", 0),
-    ("02", "viewer", "옆으로 넘겨도\n고른 사진만 나와요", "끝낼 때는 내 Face ID로 확인해요.", 0),
-    ("03", "lock", "앱을 나갔다 오면\n사진은 잠겨 있어요", "내 Face ID로 다시 열어요.", 0),
-    ("04", "guide_top", "카톡이 뜰까 봐,\n딴 앱을 열까 봐", "집중 모드·사용법 유도 설정을 알려줘요.", 0),
+    ("01", "viewer", "사진 보여줄 때,\n다른 사진까지\n볼까 봐 걱정되나요?", "", 0),
+    ("02", "home_selected", "보여주고 싶은\n사진만 골라서\n보여주세요", "", 0),
+    ("03", "guide_top", "카톡 알림이나\n다른 앱으로 이동하는 게\n걱정된다면?\n\n보호 설정 방법도\n알려드려요", "", 160),
 ]
 
 THEMES = {
@@ -26,14 +26,15 @@ TPL = """<!doctype html><html><head><meta charset="utf-8">
 html,body{{width:1320px;height:2868px;overflow:hidden;background:{bg}}}
 body{{font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;position:relative}}
 .copy{{position:absolute;left:110px;right:110px;top:{copy_top}px}}
-h1{{font-size:108px;line-height:1.24;font-weight:700;letter-spacing:-0.035em;color:{h};white-space:pre-line}}
+h1{{font-size:96px;line-height:1.24;font-weight:700;letter-spacing:-0.035em;color:{h};white-space:pre-line}}
+h1+h1{{margin-top:36px}}
 p{{margin-top:40px;font-size:46px;line-height:1.4;font-weight:500;letter-spacing:-0.02em;color:{sub}}}
 .phone{{position:absolute;left:50%;transform:translateX(-50%);top:{phone_top}px;width:1040px;
   padding:22px;border-radius:150px;background:{bezel}}}
 .screen{{display:block;width:996px;height:2164px;border-radius:128px;overflow:hidden;position:relative}}
 .screen img{{width:100%;height:100%;display:block}}
 </style></head><body>
-<div class="copy"><h1>{h1}</h1><p>{p}</p></div>
+<div class="copy">{h1}{p}</div>
 <div class="phone"><div class="screen"><img src="file://{img}"></div></div>
 </body></html>"""
 
@@ -41,6 +42,8 @@ for tkey, t in THEMES.items():
     for num, shot, h1, p, shift in FRAMES:
         copy_top = 190
         phone_top = 820 + shift
+        h1 = "".join(f"<h1>{b}</h1>" for b in h1.split("\n\n"))
+        p = f"<p>{p}</p>" if p else ""
         html = TPL.format(h1=h1, p=p, img=os.path.join(SHOTS, shot + ".png"),
                           copy_top=copy_top, phone_top=phone_top, **t)
         if shift < 0:

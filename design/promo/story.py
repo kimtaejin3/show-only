@@ -35,7 +35,7 @@ html,body{{width:{W}px;height:{H}px;overflow:hidden;font-family:P}}"""
 
 CAPTION = """<!doctype html><html><head><meta charset="utf-8"><style>{css}
 html,body{{background:transparent}}
-.c{{position:absolute;left:0;right:0;top:430px;text-align:center}}
+.c{{position:absolute;left:0;right:0;top:300px;text-align:center}}
 span{{display:inline-block;font-size:64px;line-height:1.3;letter-spacing:-0.02em;color:#fff;background:#000;
   border-radius:26px;padding:18px 40px 22px;white-space:nowrap}}
 </style></head><body><div class="c"><span>{text}</span></div></body></html>"""

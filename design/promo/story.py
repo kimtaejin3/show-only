@@ -16,7 +16,7 @@ W, H = 1080, 1920
 BEATS = [
     # 직접 찍은 영상 ①②: 폰 건네기 → 옆으로 넘겨봄 → 다시 뺏어옴 (7.3초 한 컷)
     ("clip", "a.mp4", 0.0, 7.3, [("엄마한테 이 사진들만 보라고\n폰을 줬는데", 0.0, 3.0),
-                                 ("아니나 다를까\n옆으로 넘겨보심 ㅋㅋ", 3.0, 7.3)]),
+                                 ("옆으로 넘겨서\n다른 사진까지 보심 ㅋㅋ", 3.0, 7.3)]),
     # 직접 찍은 영상 ③: 노트북 코딩 (IMG_3300.MOV)
     ("clip", "img.mov", 0.3, 4.3, [("폰 건넬 때마다 불안해서\n이걸 막아줄 앱을\n직접 만들었어요", 0.3, 4.3)]),
     # 실제 아이폰 화면 녹화: 홈 화면에서 앱 열기
@@ -35,10 +35,11 @@ html,body{{width:{W}px;height:{H}px;overflow:hidden;font-family:P}}"""
 
 CAPTION = """<!doctype html><html><head><meta charset="utf-8"><style>{css}
 html,body{{background:transparent}}
-.c{{position:absolute;left:0;right:0;top:300px;text-align:center}}
-span{{display:inline-block;font-size:64px;line-height:1.3;letter-spacing:-0.02em;color:#fff;background:#000;
-  border-radius:26px;padding:18px 40px 22px;white-space:nowrap}}
-</style></head><body><div class="c"><span>{text}</span></div></body></html>"""
+.c{{position:absolute;left:0;right:0;top:300px;display:flex;flex-direction:column;align-items:center;gap:8px}}
+/* 줄마다 자기 너비만큼 상자 */
+span{{display:block;font-size:64px;line-height:1.3;letter-spacing:-0.02em;color:#fff;background:#000;
+  border-radius:22px;padding:12px 34px 15px;white-space:nowrap}}
+</style></head><body><div class="c">{text}</div></body></html>"""
 
 SLOT = """<!doctype html><html><head><meta charset="utf-8"><style>{css}
 body{{background:#3B3E3D;position:relative}}
@@ -67,6 +68,9 @@ def run(args):
 def br(s):
     return s.replace("\n", "<br>")
 
+def lines(s):
+    return "".join(f"<span>{l}</span>" for l in s.split("\n"))
+
 parts = []
 for i, beat in enumerate(BEATS):
     cap = os.path.join(TMP, f"cap{i}.png")
@@ -75,7 +79,7 @@ for i, beat in enumerate(BEATS):
         _, dur, text, num, desc = beat
         slot = os.path.join(TMP, f"slot{i}.png")
         shot(SLOT.format(css=CSS, num="①②③④⑤"[num - 1], desc=br(desc), dur=dur), slot, False)
-        shot(CAPTION.format(css=CSS, text=br(text)), cap, True)
+        shot(CAPTION.format(css=CSS, text=lines(text)), cap, True)
         run(["ffmpeg", "-y", "-loop", "1", "-t", str(dur), "-i", slot, "-loop", "1", "-t", str(dur), "-i", cap,
              "-filter_complex", "[0][1]overlay=0:0,fps=30,format=yuv420p", "-c:v", "libx264", "-crf", "16", out])
     elif beat[0] == "clip":
@@ -84,7 +88,7 @@ for i, beat in enumerate(BEATS):
         f = [f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps=30,setsar=1[v0]"]
         for j, (text, ta, tb) in enumerate(caps):
             c = os.path.join(TMP, f"cap{i}_{j}.png")
-            shot(CAPTION.format(css=CSS, text=br(text)), c, True)
+            shot(CAPTION.format(css=CSS, text=lines(text)), c, True)
             inputs += ["-loop", "1", "-i", c]
             f.append(f"[v{j}][{j+1}:v]overlay=0:0:enable='between(t,{ta - a:.2f},{tb - a:.2f})'[v{j+1}]")
         f.append(f"[v{len(caps)}]format=yuv420p[out]")
@@ -92,7 +96,7 @@ for i, beat in enumerate(BEATS):
              "-t", f"{b - a:.3f}", "-c:v", "libx264", "-crf", "16", out])
     else:
         _, a, b, speed, text = beat
-        shot(CAPTION.format(css=CSS, text=br(text)), cap, True)
+        shot(CAPTION.format(css=CSS, text=lines(text)), cap, True)
         dur = (b - a) / speed
         # 화면 녹화(1178x2556)를 9:16으로 가득 채운다: 위아래를 조금 잘라낸다
         run(["ffmpeg", "-y", "-ss", str(a), "-t", str(b - a), "-i", TAKE, "-loop", "1", "-i", cap,

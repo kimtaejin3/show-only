@@ -2,23 +2,23 @@
   문제 상황(직접 촬영) → "불안해서 만들었어요 ㅋ" → 앱 화면 3박자 → 필요하신가요? 댓글 질문
 직접 찍을 장면은 회색 칸으로 비워두고 무엇을 찍을지 적어둔다. 찍은 영상으로 그 칸만 바꾸면 된다.
 
-python3 design/promo/story.py <take.mov> <Pretendard 폴더> <출력.mp4>
+python3 design/promo/story.py <take.mov> <Pretendard 폴더> <출력.mp4> [직접 찍은 영상 폴더]
 """
 import os, sys, subprocess, tempfile
 
 TAKE, FONT, OUT = sys.argv[1:4]
+FOOT = sys.argv[4] if len(sys.argv) > 4 else ""
 TMP = tempfile.mkdtemp()
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 W, H = 1080, 1920
 
 # ("slot", 길이, 자막, 번호, 찍을 것) / ("screen", 원본 시작, 끝, 배속, 자막)
 BEATS = [
-    ("slot", 1.8, "이 앱 써보고 싶은지\n알려주세요", 1,
-     "친구나 엄마에게 갤러리 사진을 보여주며\n폰을 건네는 장면 (①은 4.8초 한 컷)"),
-    ("slot", 3.0, "친구한테 이 사진만 보라고\n폰을 줬는데", 1,
-     "친구나 엄마에게 갤러리 사진을 보여주며\n폰을 건네는 장면 (①은 4.8초 한 컷)"),
-    ("slot", 2.5, "아니나 다를까\n옆으로 넘겨봄 ㅋ", 2,
-     "어깨 너머로, 상대가 사진을 옆으로\n쓱 넘기는 손 (당황하는 내 반응도 좋아요)"),
+    # 직접 찍은 영상 ①②: 폰 건네기 → 옆으로 넘겨봄 → 다시 뺏어옴 (7.3초 한 컷)
+    ("clip", "a.mp4", 0.0, 7.3, [("이 앱 써보고 싶은지\n알려주세요", 0.0, 1.5),
+                                 ("엄마한테 이 사진만 보라고\n폰을 줬는데", 1.5, 3.0),
+                                 ("아니나 다를까\n옆으로 넘겨봄 ㅋ", 3.0, 4.5),
+                                 ("결국 다시 뺏어옴 ㅋ", 4.5, 7.3)]),
     ("slot", 3.0, "불안해서\n앱을 만들었어요 ㅋ", 3,
      "노트북으로 코딩하는 화면을\n폰으로 찍기 (예시 영상 2~5초처럼)"),
     ("screen", 29.0, 35.7, 1.6, "보여줄 사진만 골라서"),
@@ -78,6 +78,18 @@ for i, beat in enumerate(BEATS):
         shot(CAPTION.format(css=CSS, text=br(text)), cap, True)
         run(["ffmpeg", "-y", "-loop", "1", "-t", str(dur), "-i", slot, "-loop", "1", "-t", str(dur), "-i", cap,
              "-filter_complex", "[0][1]overlay=0:0,fps=30,format=yuv420p", "-c:v", "libx264", "-crf", "16", out])
+    elif beat[0] == "clip":
+        _, name, a, b, caps = beat
+        inputs = ["-ss", str(a), "-t", str(b - a), "-i", os.path.join(FOOT, name)]
+        f = [f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps=30,setsar=1[v0]"]
+        for j, (text, ta, tb) in enumerate(caps):
+            c = os.path.join(TMP, f"cap{i}_{j}.png")
+            shot(CAPTION.format(css=CSS, text=br(text)), c, True)
+            inputs += ["-loop", "1", "-i", c]
+            f.append(f"[v{j}][{j+1}:v]overlay=0:0:enable='between(t,{ta - a:.2f},{tb - a:.2f})'[v{j+1}]")
+        f.append(f"[v{len(caps)}]format=yuv420p[out]")
+        run(["ffmpeg", "-y", *inputs, "-filter_complex", ";".join(f), "-map", "[out]",
+             "-t", f"{b - a:.3f}", "-c:v", "libx264", "-crf", "16", out])
     else:
         _, a, b, speed, text = beat
         shot(CAPTION.format(css=CSS, text=br(text)), cap, True)

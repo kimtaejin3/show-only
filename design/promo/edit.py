@@ -16,7 +16,7 @@ SEGMENTS = [
     (29.0, 35.7, 1.6, [("c03", 0, 99)], False),                       # 사진 고르기
     (36.0, 39.3, 1.3, [("c03", 0, 99)], False),                       # 3장 골랐어요
     (39.6, 49.6, 1.0, [("c04", 0, 46.0), ("c05", 46.0, 99)], False),  # 뷰어 넘기기
-    (50.6, 53.0, 1.0, [("c06", 0, 99)], True),                        # 홈으로 나감
+    (50.6, 52.85, 1.0, [("c06", 0, 99)], True),                        # 홈으로 나감
     (53.4, 54.6, 1.0, [("c07", 0, 99)], False),                       # 잠금 화면
     (55.9, 60.2, 1.6, [("c07", 0, 99)], False),                       # Face ID로 다시 보기
     (61.6, 67.2, 1.6, [("c08", 0, 99)], False),                       # 끝내기 Face ID
@@ -34,9 +34,12 @@ for i, (a, b, speed, caps, patch) in enumerate(SEGMENTS):
     if patch:
         # 테스트 실행기 아이콘 자리를 깨끗한 홈 화면으로 덮는다
         inputs += ["-loop", "1", "-i", CLEAN_SB]
-        f.append(f"[2:v]crop=310:280:580:510,format=yuv420p[pt];[0:v][pt]overlay=580:510:shortest=1[src]")
-        src = "[src]"
-    f.append(f"{src}setpts=(PTS-STARTPTS)/{speed},fps=30,format=yuv420p,split[s1][s2]")
+        # 녹화는 화면이 바뀔 때만 프레임이 생기므로 fps로 고른 뒤에 덮는다
+        f.append(f"[0:v]setpts=(PTS-STARTPTS)/{speed},fps=30,format=yuv420p[c0]")
+        f.append(f"[2:v]crop=310:280:580:510,format=yuv420p[pt];[c0][pt]overlay=580:510:shortest=1:enable='between(t,0.15,2.3)'[src]")
+        f.append("[src]split[s1][s2]")
+    else:
+        f.append(f"{src}setpts=(PTS-STARTPTS)/{speed},fps=30,format=yuv420p,split[s1][s2]")
     f.append(f"[s1]scale={W}:-2,crop={W}:{H},boxblur=40:2,eq=brightness=-0.06[bg]")
     f.append(f"[1:v]scale={SW}:{SH},format=gray[m]")
     f.append(f"[s2]scale={SW}:{SH},format=rgba[fg0];[fg0][m]alphamerge[fg]")

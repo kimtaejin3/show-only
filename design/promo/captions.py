@@ -26,16 +26,16 @@ TPL = """<!doctype html><html><head><meta charset="utf-8"><style>
 *{{margin:0;padding:0;box-sizing:border-box}}
 html,body{{width:1080px;height:1920px;background:transparent;overflow:hidden}}
 .wrap{{position:absolute;left:0;right:0;top:{top}px;display:flex;flex-direction:column;align-items:center;gap:14px}}
-span{{font-family:P;font-weight:700;font-size:{size}px;line-height:1;letter-spacing:-0.02em;color:#fff;
-  background:#111;border-radius:22px;padding:22px 34px 24px;white-space:nowrap}}
+span{{font-family:P;font-weight:700;font-size:{size}px;line-height:1.32;letter-spacing:-0.02em;color:#fff;text-align:center;
+  background:#111;border-radius:24px;padding:20px 38px 22px;white-space:nowrap}}
 </style></head><body><div class="wrap">{lines}</div></body></html>"""
 
 for name, lines, top in CAPTIONS:
     size = 62
     # 화면 위 띠(0~400px) 가운데에 놓는다. 한 줄 상자 높이 약 110px
-    top = top if top is not None else (145 if len(lines) == 1 else 83)
+    top = top if top is not None else (145 if len(lines) == 1 else 104)
     html = TPL.format(font=FONT_DIR, top=top, size=size,
-                      lines="".join(f"<span>{l}</span>" for l in lines))
+                      lines="<span>" + "<br>".join(lines) + "</span>")
     hp = os.path.join(TMP, name + ".html")
     open(hp, "w").write(html)
     png = os.path.join(OUT, name + ".png")
@@ -57,7 +57,7 @@ img{{position:absolute;left:350px;top:560px;width:380px;height:380px;border-radi
 .wrap{{position:absolute;left:0;right:0;top:1030px;display:flex;flex-direction:column;align-items:center;gap:14px}}
 span{{font-family:P;font-weight:700;font-size:62px;line-height:1;letter-spacing:-0.02em;color:#fff;background:#111;border-radius:22px;padding:22px 34px 24px}}
 </style></head><body><img src="file://{os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'app-icon.svg')}">
-<div class="wrap"><span>보여줄 땐,</span><span>딱 이 사진만</span></div></body></html>""", (1080, 1920)),
+<div class="wrap"><span style='line-height:1.32;text-align:center'>보여줄 땐,<br>딱 이 사진만</span></div></body></html>""", (1080, 1920)),
 }
 for name, (html, (w, h)) in EXTRA.items():
     hp = os.path.join(TMP, name + ".html")

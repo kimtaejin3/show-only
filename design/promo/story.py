@@ -26,7 +26,7 @@ BEATS = [
     # 실제 아이폰 화면 녹화: 고른 사진 3장 (sr2.mp4)
     ("clip", "sr2.mp4", 0.0, 3.0, [("이제 마음 편히\n보여줄 수 있어요", 0.0, 3.0)]),
     # 실제 아이폰 화면 녹화: 고른 사진만 넘기기 (sr3.mov)
-    ("clip", "sr3.mov", 1.0, 4.6, [("써보고 싶으면\n댓글로 알려주세요!", 1.0, 4.6)]),
+    ("clip", "sr3.mov", 1.0, 4.6, [("써보고 싶으면\n댓글로 알려주세요!", 1.0, 4.6)], "fit"),
 ]
 
 CSS = f"""@font-face{{font-family:P;src:url('file://{FONT}/Pretendard-SemiBold.otf')}}
@@ -84,9 +84,13 @@ for i, beat in enumerate(BEATS):
         run(["ffmpeg", "-y", "-loop", "1", "-t", str(dur), "-i", slot, "-loop", "1", "-t", str(dur), "-i", cap,
              "-filter_complex", "[0][1]overlay=0:0,fps=30,format=yuv420p", "-c:v", "libx264", "-crf", "16", out])
     elif beat[0] == "clip":
-        _, name, a, b, caps = beat
+        _, name, a, b, caps, *mode = beat
         inputs = ["-ss", str(a), "-t", str(b - a), "-i", os.path.join(FOOT, name)]
-        f = [f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps=30,setsar=1[v0]"]
+        if mode == ["fit"]:
+            # 앱 화면 전체가 보이게 세로에 맞추고 남는 좌우는 뷰어 배경색(검정)으로 채운다
+            f = [f"[0:v]crop=iw:ih-30:0:30,scale=-2:{H},pad={W}:{H}:(ow-iw)/2:0:black,fps=30,setsar=1[v0]"]
+        else:
+            f = [f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps=30,setsar=1[v0]"]
         for j, (text, ta, tb) in enumerate(caps):
             c = os.path.join(TMP, f"cap{i}_{j}.png")
             shot(CAPTION.format(css=CSS, text=lines(text)), c, True)

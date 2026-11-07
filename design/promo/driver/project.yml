@@ -1,0 +1,42 @@
+name: PromoDriver
+options:
+  deploymentTarget:
+    iOS: "16.0"
+targets:
+  ShowOnly:
+    type: application
+    platform: iOS
+    sources:
+      - path: /Users/kimtaejin/app/show-only/ShowOnly
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.showonly
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: "딱 이 사진만"
+        INFOPLIST_KEY_NSFaceIDUsageDescription: "보여주기를 끝내거나 잠긴 사진을 다시 볼 때 본인 확인에 Face ID를 사용해요."
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_LSRequiresIPhoneOS: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: 1
+        SWIFT_VERSION: 5.0
+        MARKETING_VERSION: 1.0
+        CURRENT_PROJECT_VERSION: 1
+        CODE_SIGNING_ALLOWED: NO
+  PromoUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [PromoUITests]
+    dependencies:
+      - target: ShowOnly
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.promouitests
+        CODE_SIGNING_ALLOWED: NO
+schemes:
+  Promo:
+    build:
+      targets: {ShowOnly: all, PromoUITests: [test]}
+    test:
+      targets: [PromoUITests]

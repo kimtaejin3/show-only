@@ -20,7 +20,7 @@ BEATS = [
     # 직접 찍은 영상 ③: 노트북 코딩 (IMG_3300.MOV)
     ("clip", "img.mov", 0.3, 4.3, [("사진 보여줄 때마다 불안해서\n앱을 만들었어요", 0.3, 4.3)]),
     # 실제 아이폰 화면 녹화: 홈 화면에서 앱 열기
-    ("clip", "sr.mp4", 0.6, 2.8, [("딱 이 사진만", 0.6, 2.8)]),
+    ("clip", "sr.mp4", 0.6, 2.8, [("앱 이름은 딱 이 사진만", 0.6, 2.8)]),
     ("screen", 29.0, 35.7, 1.6, "보여줄 사진들만 고르면"),
     ("screen", 40.2, 45.8, 1.5, "이것들만 볼 수 있어요"),
     # 실제 아이폰 화면 녹화: 고른 사진 3장 (sr2.mp4)
@@ -35,10 +35,11 @@ html,body{{width:{W}px;height:{H}px;overflow:hidden;font-family:P}}"""
 
 CAPTION = """<!doctype html><html><head><meta charset="utf-8"><style>{css}
 html,body{{background:transparent}}
-.c{{position:absolute;left:0;right:0;top:300px;display:flex;flex-direction:column;align-items:center;gap:8px}}
+.c{{position:absolute;left:0;right:0;top:300px;display:flex;flex-direction:column;align-items:center}}
 /* 줄마다 자기 너비만큼 상자 */
 span{{display:block;font-size:64px;line-height:1.3;letter-spacing:-0.02em;color:#fff;background:#000;
-  border-radius:22px;padding:12px 34px 15px;white-space:nowrap}}
+  border-radius:20px;padding:10px 34px 12px;white-space:nowrap;margin-top:-2px}}
+span:first-child{{padding-top:16px}} span:last-child{{padding-bottom:18px}}
 </style></head><body><div class="c">{text}</div></body></html>"""
 
 SLOT = """<!doctype html><html><head><meta charset="utf-8"><style>{css}
